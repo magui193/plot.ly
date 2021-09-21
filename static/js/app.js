@@ -12,13 +12,13 @@ function buildCharts(selectedPatientID) {
         var filteredMetadata = data.metadata.filter(patient => patient.id == selectedPatientID)[0]
 
         console.log(filteredMetadata)
-        
+
         // Create horizontal bar chart with filtered sample
 
         var trace1 = {
-            x: filteredSample.sample_values.slice(0,10).reverse(),
-            y: filteredSample.otu_ids.slice(0,10).map(otu_id => `OTU #${otu_id}`).reverse(),
-            text: filteredSample.otu_labels.slice(0,10).reverse(),
+            x: filteredSample.sample_values.slice(0, 10).reverse(),
+            y: filteredSample.otu_ids.slice(0, 10).map(otu_id => `OTU #${otu_id}`).reverse(),
+            text: filteredSample.otu_labels.slice(0, 10).reverse(),
             marker: {
             },
             type: 'bar',
@@ -81,7 +81,6 @@ function populateDemographicInfo(selectedPatientID) {
     var demographicInfoBox = d3.select("#sample-metadata");
     d3.json("samples.json").then(data => {
         console.log(data)
-        // ADD APPROXIMATELY 3-6 LINE OF CODE
     })
 }
 

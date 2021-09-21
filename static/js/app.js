@@ -78,9 +78,14 @@ function buildCharts(selectedPatientID) {
 
 // FUNCTION #2 of 5
 function populateDemographicInfo(selectedPatientID) {
-    var demographicInfoBox = d3.select("#sample-metadata");
     d3.json("samples.json").then(data => {
-        console.log(data)
+        //console.log(data),
+        var filterArray = data.metadata.filter(patient => patient.id == selectedPatientID)[0];
+        var demographicInfoBox = d3.select("#sample-metadata");
+        demographicInfoBox.html("");
+        Object.entries(filterArray).forEach(([key, value]) => {
+            demographicInfoBox.append("h6").text(`${key.toUpperCase()}: ${value}`)
+        })
     })
 }
 
